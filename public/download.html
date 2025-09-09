@@ -1,36 +1,293 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Download AIU Dance</title>
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;margin:0;display:flex;min-height:100vh;align-items:center;justify-content:center;background:#0b0f17;color:#e6e9ef}
-    .card{max-width:560px;width:100%;background:#121826;border:1px solid #1f2837;border-radius:16px;padding:28px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
-    h1{margin:0 0 10px}
-    p{opacity:.9}
-    .btn{display:inline-block;margin-top:16px;padding:14px 18px;border-radius:12px;text-decoration:none;background:#2b84ff;color:white;font-weight:600}
-    .meta{font-size:14px;opacity:.85;margin-top:10px;line-height:1.35}
-    code{background:#0f1522;padding:2px 6px;border-radius:6px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarcă AIU Dance - Aplicația Android</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #673AB7 0%, #9C27B0 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #673AB7;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .version {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .features {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .feature-icon {
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(45deg, #FF6F00, #FF8F00);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
+            margin-bottom: 20px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 111, 0, 0.6);
+        }
+        
+        .size-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .step {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #FF6F00;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .download-btn {
+                font-size: 16px;
+                padding: 14px 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h1>AIU Dance — Android APK</h1>
-    <p>Apasă butonul de mai jos pentru descărcare directă. Apoi deschide fișierul descărcat și acceptă instalarea din surse necunoscute.</p>
-    <a class="btn" href="https://github.com/adrianpersonal/aiu_dance/releases/download/v1.0.0/aiu_dance_release.apk" download>📥 Download AIU Dance APK</a>
-    
-    <div style="margin-top: 20px;">
-      <p style="font-size: 14px; opacity: 0.8;">Alternative download methods:</p>
-      <a class="btn" href="https://firebasestorage.googleapis.com/v0/b/aiu-dance.appspot.com/o/aiu-dance.apk?alt=media" style="background: #FF6F00; margin: 5px;">☁️ Firebase Storage</a>
-      <a class="btn" href="mailto:admin@aiudance.ro?subject=Cerere APK AIU Dance&body=Bună! Aș dori să descarc aplicația AIU Dance pentru Android." style="background: #25D366; margin: 5px;">📧 Email Request</a>
-      <a class="btn" href="https://wa.me/40712345678?text=Bună! Aș dori să descarc aplicația AIU Dance pentru Android." style="background: #25D366; margin: 5px;">💬 WhatsApp</a>
+    <div class="container">
+        <div class="logo">🎭</div>
+        
+        <h1>AIU Dance</h1>
+        <div class="version">Versiunea 1.0.0 • Optimizată</div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎓</div>
+                <span>Gestionare cursuri de dans</span>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <span>Portofel digital integrat</span>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <span>QR codes pentru prezență</span>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🍹</div>
+                <span>Meniu bar cu plăți QR</span>
+            </div>
+        </div>
+        
+        <div class="size-info">
+            <strong>📦 Dimensiune:</strong> 29.4 MB (optimizată)<br>
+            <strong>📱 Compatibilitate:</strong> Android 6.0+<br>
+            <strong>🔧 Arhitectură:</strong> ARM64 (99% telefoane)
+        </div>
+        
+        <!-- Main Download Button -->
+        <a href="https://github.com/AdiVlop/aiu-dance-app/releases/download/v1.0.2/aiu_dance_fixed_supabase.apk"
+           class="download-btn" 
+           download="aiu_dance_fixed_supabase.apk"
+           style="background: linear-gradient(45deg, #4CAF50, #45a049); margin-top: 20px;">
+            📱 Download AIU Dance APK v1.0.2 (Supabase Fix)
+        </a>
+        
+        <br><br>
+        
+        <!-- Download via alternative methods -->
+        <a href="mailto:admin@aiudance.ro?subject=Cerere APK AIU Dance&body=Bună! Aș dori să descarc aplicația AIU Dance pentru Android. Vă rog să-mi trimiteți link-ul de descărcare." 
+           class="download-btn" 
+           target="_blank">
+            📧 Cere APK prin Email
+        </a>
+        
+        <br><br>
+        
+        <a href="https://wa.me/40712345678?text=Bună! Aș dori să descarc aplicația AIU Dance pentru Android. Vă rog să-mi trimiteți link-ul de descărcare." 
+           class="download-btn" 
+           target="_blank"
+           style="background: linear-gradient(45deg, #25D366, #128C7E);">
+            💬 Cere APK prin WhatsApp
+        </a>
+        
+        <!-- Alternative download methods -->
+        <br>
+        <div style="margin-top: 20px; font-size: 14px; opacity: 0.9;">
+            <p>📧 <strong>Prin email:</strong> Contactează-ne la <a href="mailto:admin@aiudance.ro?subject=Cerere APK AIU Dance" style="color: #FFD54F;">admin@aiudance.ro</a></p>
+            <p>💬 <strong>Prin WhatsApp:</strong> Trimite mesaj pentru link direct</p>
+            <p>🔗 <strong>Link direct:</strong> Disponibil la cerere pentru instalare rapidă</p>
+        </div>
+        
+        <div class="instructions">
+            <h3 style="margin-bottom: 16px; color: #FFD54F;">📋 Instrucțiuni de instalare:</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Descarcă aplicația</strong><br>
+                    Apasă butonul de mai sus și așteaptă finalizarea descărcării
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Permite surse necunoscute</strong><br>
+                    Setări → Securitate → Activează "Surse necunoscute" sau "Instalare aplicații necunoscute"
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Instalează aplicația</strong><br>
+                    Deschide fișierul descărcat și apasă "Instalează"
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>Deschide AIU Dance</strong><br>
+                    Găsește aplicația în meniu și începe să o folosești!
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px; font-size: 12px; opacity: 0.8;">
+            ⚡ Aplicația a fost optimizată pentru performanță maximă și dimensiune redusă
+        </div>
     </div>
-    
-    <div class="meta">
-      <div>Versiune: <strong>1.0.0</strong> • Min Android: <strong>6.0+</strong></div>
-      <div>Dacă apare „Not allowed", mergi la <em>Settings → Security → Install unknown apps</em> și permite pentru browserul tău.</div>
-    </div>
-  </div>
+
+    <script>
+        // Analytics pentru tracking descărcări
+        function trackDownload(source) {
+            console.log('APK Download started from:', source);
+            
+            // Afișează progres
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Se descarcă...';
+            btn.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.pointerEvents = 'auto';
+            }, 3000);
+        }
+        
+        // Attach event listeners
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', trackDownload);
+        });
+    </script>
 </body>
 </html>

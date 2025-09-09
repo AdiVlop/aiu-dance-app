@@ -1,119 +1,274 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIU Dance - Școala de Dans</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #673AB7 0%, #9C27B0 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            text-align: center;
-            max-width: 600px;
-            padding: 40px;
-        }
-        .logo {
-            font-size: 80px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        .subtitle {
-            font-size: 24px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-        .btn {
-            display: inline-block;
-            padding: 16px 32px;
-            background: #FF6F00;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
-        }
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        .features {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        .feature {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-        .feature h3 {
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-        .feature p {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-    </style>
+  <base href="/">
+  
+  <!-- Meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- App Info -->
+  <title>AIU Dance - Școala de Dans</title>
+  <meta name="description" content="AIU Dance - Aplicația pentru gestionarea școlii de dans. Cursuri de salsa, bachata, kizomba. Înscrie-te acum!">
+  <meta name="keywords" content="dans, salsa, bachata, kizomba, cursuri, școală dans, AIU Dance, România">
+  <meta name="author" content="AIU Dance">
+  
+  <!-- Open Graph Meta Tags pentru Social Media -->
+  <meta property="og:title" content="AIU Dance - Școala de Dans">
+  <meta property="og:description" content="Înscrie-te la cursurile de dans AIU Dance! Salsa, Bachata, Kizomba și multe altele.">
+  <meta property="og:url" content="https://aiu-dance.web.app">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://aiu-dance.web.app/icons/Icon-512.png">
+  <meta property="og:locale" content="ro_RO">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AIU Dance - Școala de Dans">
+  <meta name="twitter:description" content="Înscrie-te la cursurile de dans AIU Dance!">
+  <meta name="twitter:image" content="https://aiu-dance.web.app/icons/Icon-512.png">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AIU Dance">
+  <meta name="theme-color" content="#673AB7">
+  <meta name="msapplication-TileColor" content="#673AB7">
+  <meta name="msapplication-navbutton-color" content="#673AB7">
+  
+  <!-- Favicon și Icons -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/Icon-512.png">
+  
+  <!-- Manifest pentru PWA -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Preconnect pentru Performance -->
+  <link rel="preconnect" href="https://wphitbnrfcyzehjbpztd.supabase.co">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- CSS pentru Loading Screen -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+    }
+    
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+    
+    .logo-container {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: url('assets/images/logo_aiu_dance.png') center/contain no-repeat;
+    }
+    
+    .logo-fallback {
+      font-size: 40px;
+      color: #673AB7;
+    }
+    
+    .app-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .app-subtitle {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    .loading-text {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Hide loading when Flutter is ready */
+    .flutter-ready .loading-container {
+      display: none;
+    }
+    
+    /* Error handling */
+    .error-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .error-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    
+    .error-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .error-message {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+    
+    .retry-button {
+      background: white;
+      color: #673AB7;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .retry-button:hover {
+      background: #f5f5f5;
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">🎭</div>
-        <h1>AIU Dance</h1>
-        <p class="subtitle">Școala de Dans</p>
-        
-        <a href="/download.html" class="btn">📱 Descarcă Aplicația</a>
-        <a href="https://aiu-dance.web.app" class="btn btn-secondary">🌐 Versiunea Web</a>
-        
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🎓</div>
-                <h3>Cursuri de Dans</h3>
-                <p>Salsa, Bachata, Kizomba și multe altele</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">💰</div>
-                <h3>Portofel Digital</h3>
-                <p>Plăți rapide și sigure</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📱</div>
-                <h3>QR Check-in</h3>
-                <p>Prezență automată la cursuri</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🍹</div>
-                <h3>Bar Digital</h3>
-                <p>Comenzi și plăți prin QR</p>
-            </div>
-        </div>
+  <!-- Loading Screen -->
+  <div class="loading-container" id="loading">
+    <div class="logo-container">
+      <div class="logo" id="logo"></div>
+      <div class="logo-fallback" id="logo-fallback" style="display: none;">🎭</div>
     </div>
+    <div class="app-title">AIU Dance</div>
+    <div class="app-subtitle">Aplicația ta de dans preferată</div>
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Se încarcă aplicația...</div>
+  </div>
+  
+  <!-- Error Screen -->
+  <div class="error-container" id="error">
+    <div class="error-icon">⚠️</div>
+    <div class="error-title">Eroare de încărcare</div>
+    <div class="error-message">Nu am putut încărca aplicația AIU Dance.</div>
+    <button class="retry-button" onclick="window.location.reload()">Încearcă din nou</button>
+  </div>
+  
+  <!-- Flutter App Container -->
+  <div id="flutter-app"></div>
+  
+  <!-- Scripts -->
+  <script>
+    // Logo fallback handling
+    document.getElementById('logo').onerror = function() {
+      document.getElementById('logo').style.display = 'none';
+      document.getElementById('logo-fallback').style.display = 'block';
+    };
+    
+    // Performance tracking
+    const startTime = performance.now();
+    
+    // Error handling
+    window.addEventListener('error', function(e) {
+      console.error('AIU Dance Error:', e.error);
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').style.display = 'flex';
+      }, 2000);
+    });
+    
+    // Flutter ready callback
+    window.addEventListener('flutter-first-frame', function() {
+      const loadTime = performance.now() - startTime;
+      console.log(`🚀 AIU Dance loaded in ${Math.round(loadTime)}ms`);
+      
+      // Hide loading screen
+      document.getElementById('loading').style.display = 'none';
+      document.body.classList.add('flutter-ready');
+    });
+    
+    // PWA Install prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      console.log('💾 AIU Dance PWA install available');
+    });
+    
+    // Service Worker pentru PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/flutter_service_worker.js')
+          .then(registration => {
+            console.log('✅ AIU Dance Service Worker registered');
+          })
+          .catch(error => {
+            console.log('❌ Service Worker registration failed:', error);
+          });
+      });
+    }
+    
+    // Analytics placeholder
+    console.log('📊 AIU Dance Analytics ready');
+  </script>
+  
+  <!-- Flutter Bootstrap -->
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
-
-

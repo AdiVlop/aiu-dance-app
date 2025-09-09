@@ -62,10 +62,14 @@ class AuthService {
     required String password,
   }) async {
     try {
+      Logger.info('Attempting to sign in with email: $email');
+      
       final response = await _client.auth.signInWithPassword(
         email: email,
         password: password,
       );
+
+      Logger.info('✅ Sign in successful for user: ${response.user?.email}');
 
       if (response.user != null) {
         // Try to get profile, but don't create if missing
@@ -73,8 +77,18 @@ class AuthService {
       }
 
       return response;
+    } on AuthException catch (e) {
+      Logger.error('Auth error: ${e.message}', e);
+      rethrow;
+    } on AuthRetryableFetchException catch (e) {
+      Logger.error('Network error during auth: ${e.message}', e);
+      // For mobile apps, provide more specific error handling
+      if (e.message.contains('Failed host lookup') || e.message.contains('No address associated with hostname')) {
+        throw Exception('Problema de conexiune la internet. Verifică conexiunea la rețea și încearcă din nou.');
+      }
+      rethrow;
     } catch (e) {
-      Logger.error('Error signing in', e);
+      Logger.error('Unexpected error signing in', e);
       rethrow;
     }
   }

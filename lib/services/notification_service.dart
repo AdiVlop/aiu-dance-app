@@ -45,11 +45,11 @@ class NotificationService {
 
       final response = await _supabase
           .from('notifications')
-          .select('id', const FetchOptions(count: CountOption.exact))
+          .select('id')
           .eq('user_id', userId)
           .eq('read', false);
 
-      return response.count ?? 0;
+      return response.length;
     } catch (e) {
       Logger.error('Error getting unread count: $e');
       return 0;

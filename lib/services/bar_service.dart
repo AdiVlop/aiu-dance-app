@@ -258,28 +258,28 @@ class BarService {
       // Total menu items
       final totalMenuResponse = await _supabase
           .from('bar_menu')
-          .select('id', const FetchOptions(count: CountOption.exact));
+          .select('id');
 
       // Available menu items
       final availableMenuResponse = await _supabase
           .from('bar_menu')
-          .select('id', const FetchOptions(count: CountOption.exact))
+          .select('id')
           .eq('is_available', true);
 
       // Total orders
       final totalOrdersResponse = await _supabase
           .from('bar_orders')
-          .select('id', const FetchOptions(count: CountOption.exact));
+          .select('id');
 
       // Orders by status
       final pendingOrdersResponse = await _supabase
           .from('bar_orders')
-          .select('id', const FetchOptions(count: CountOption.exact))
+          .select('id')
           .eq('status', 'pending');
 
       final confirmedOrdersResponse = await _supabase
           .from('bar_orders')
-          .select('id', const FetchOptions(count: CountOption.exact))
+          .select('id')
           .eq('status', 'confirmed');
 
       // Revenue calculation
@@ -305,11 +305,11 @@ class BarService {
       }
 
       return {
-        'totalMenuItems': totalMenuResponse.count ?? 0,
-        'availableItems': availableMenuResponse.count ?? 0,
-        'totalOrders': totalOrdersResponse.count ?? 0,
-        'pendingOrders': pendingOrdersResponse.count ?? 0,
-        'confirmedOrders': confirmedOrdersResponse.count ?? 0,
+        'totalMenuItems': totalMenuResponse.length,
+        'availableItems': availableMenuResponse.length,
+        'totalOrders': totalOrdersResponse.length,
+        'pendingOrders': pendingOrdersResponse.length,
+        'confirmedOrders': confirmedOrdersResponse.length,
         'totalRevenue': totalRevenue,
         'categories': categories,
       };

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-// import 'package:flutter_stripe/flutter_stripe.dart'; // Temporar dezactivat pentru APK minimal
+// import 'package:flutter_stripe/flutter_stripe.dart'; // Temporar dezactivat
 import 'config/supabase_config.dart';
 import 'services/auth_service.dart';
-// import 'services/stripe_service.dart'; // Temporar dezactivat pentru APK minimal
+import 'services/stripe_service.dart';
 import 'screens/auth/register_screen.dart';
 import 'screens/admin/admin_dashboard_screen.dart';
 import 'screens/instructor/instructor_dashboard_screen.dart';
@@ -21,7 +21,6 @@ import 'screens/notifications/notification_list_screen.dart';
 import 'screens/admin/qr/qr_attendance_admin_screen.dart';
 import 'screens/qr_scanner/qr_checkin_scanner_screen.dart';
 import 'screens/bar/bar_receipt_screen.dart';
-import 'screens/admin/bar/qr_bar_menu_screen.dart';
 import 'screens/instructor/instructor_course_create_screen.dart';
 import 'screens/instructor/instructor_announcements_screen.dart';
 
@@ -30,22 +29,33 @@ void main() async {
   
   print('🚀 Starting AIU Dance App...');
   
-  // Initialize Supabase
-  await Supabase.initialize(
-    url: SupabaseConfig.supabaseUrl,
-    anonKey: SupabaseConfig.supabaseAnonKey,
-  );
+  // Initialize Supabase with mobile-specific configuration
+  try {
+    await Supabase.initialize(
+      url: SupabaseConfig.supabaseUrl,
+      anonKey: SupabaseConfig.supabaseAnonKey,
+      authOptions: const FlutterAuthClientOptions(
+        authFlowType: AuthFlowType.pkce,
+        autoRefreshToken: true,
+      ),
+      realtimeClientOptions: const RealtimeClientOptions(
+        logLevel: RealtimeLogLevel.info,
+      ),
+    );
+    print('✅ Supabase initialized successfully');
+  } catch (e) {
+    print('❌ Supabase initialization failed: $e');
+    // Continue without Supabase for now
+  }
   
-  print('✅ Supabase initialized successfully');
-  
-  // Initialize Stripe - Temporar dezactivat pentru APK minimal
-  // try {
-  //   await StripeService.initStripe();
-  //   print('✅ Stripe initialized successfully');
-  // } catch (e) {
-  //   print('⚠️ Stripe initialization failed: $e');
-  //   // Continue without Stripe for now
-  // }
+  // Initialize Stripe
+  try {
+    await StripeService.initStripe();
+    print('✅ Stripe initialized successfully');
+  } catch (e) {
+    print('⚠️ Stripe initialization failed: $e');
+    // Continue without Stripe for now
+  }
   
   runApp(const MyApp());
 }
@@ -95,7 +105,6 @@ class MyApp extends StatelessWidget {
         '/scanner/qr': (context) => const QRCheckinScannerScreen(),
         
         // Bar routes:
-        '/bar/menu': (context) => const QRBarMenuScreen(),
         '/bar/receipt': (context) => const BarReceiptScreen(),
       },
     );

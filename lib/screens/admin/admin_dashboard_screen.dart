@@ -776,7 +776,10 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
         ),
         DashboardCardBuilder.buildRevenueCard(
           _stats['totalRevenue']?.toDouble() ?? 0.0,
-          onTap: () => setState(() => _selectedIndex = 5), // Navigate to Wallet tab
+          onTap: () {
+            print('Revenue card tapped, navigating to reports');
+            setState(() => _selectedIndex = 7);
+          },
         ),
         DashboardCardBuilder.buildAttendanceCard(
           _stats['totalAttendance'] ?? 0,
@@ -788,7 +791,10 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
         ),
         DashboardCardBuilder.buildPaymentsCard(
           _stats['totalTransactions'] ?? 0,
-          onTap: () => setState(() => _selectedIndex = 6), // Navigate to Reports tab
+          onTap: () {
+            print('Payments card tapped, navigating to reports');
+            setState(() => _selectedIndex = 7);
+          },
         ),
       ],
     );
@@ -1119,14 +1125,14 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
             cards: [
               DashboardCardBuilder.buildRevenueCard(
                 _stats['totalRevenue']?.toDouble() ?? 0.0,
-                onTap: () => setState(() => _selectedIndex = 5),
+                onTap: () => setState(() => _selectedIndex = 7),
               ),
               DashboardCardBuilder.buildCustomCard(
                 icon: Icons.receipt,
                 title: '${_stats['totalTransactions'] ?? 0}',
                 subtitle: 'Tranzacții',
                 color: Colors.blue,
-                onTap: () => setState(() => _selectedIndex = 6),
+                onTap: () => setState(() => _selectedIndex = 7),
               ),
               DashboardCardBuilder.buildBarOrdersCard(
                 _stats['totalBarOrders'] ?? 0,

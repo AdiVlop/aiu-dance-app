@@ -22,7 +22,7 @@ class StripeService {
       return;
       
       // Stripe.publishableKey = stripePublishableKey;
-      await Stripe.instance.applySettings();
+      // await Stripe.instance.applySettings();
       Logger.info('✅ Stripe initialized successfully');
     } catch (e) {
       Logger.error('Error initializing Stripe', e);
@@ -239,15 +239,19 @@ class StripeService {
     required String customerId,
   }) async {
     try {
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          paymentIntentClientSecret: clientSecret,
-          customerEphemeralKeySecret: customerEphemeralKey,
-          customerId: customerId,
-          merchantDisplayName: 'AIU Dance',
-        ),
-      );
-      Logger.info('✅ Payment sheet initialized');
+      // Stripe functionality temporarily disabled for APK optimization
+      print('[STRIPE] Payment sheet initialization disabled for APK optimization');
+      return;
+      
+      // await Stripe.instance.initPaymentSheet(
+      //   paymentSheetParameters: SetupPaymentSheetParameters(
+      //     paymentIntentClientSecret: clientSecret,
+      //     customerEphemeralKeySecret: customerEphemeralKey,
+      //     customerId: customerId,
+      //     merchantDisplayName: 'AIU Dance',
+      //   ),
+      // );
+      Logger.info('✅ Payment sheet initialization skipped');
     } catch (e) {
       Logger.error('Error initializing payment sheet', e);
       rethrow;
@@ -256,8 +260,12 @@ class StripeService {
 
   static Future<void> confirmPayment() async {
     try {
-      await Stripe.instance.presentPaymentSheet();
-      Logger.info('✅ Payment confirmed');
+      // Stripe functionality temporarily disabled for APK optimization
+      print('[STRIPE] Payment confirmation disabled for APK optimization');
+      return;
+      
+      // await Stripe.instance.presentPaymentSheet();
+      Logger.info('✅ Payment confirmation skipped');
     } catch (e) {
       Logger.error('Error confirming payment', e);
       rethrow;

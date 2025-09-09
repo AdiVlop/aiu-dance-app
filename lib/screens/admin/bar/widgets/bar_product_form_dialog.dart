@@ -86,10 +86,11 @@ class _BarProductFormDialogState extends State<BarProductFormDialog> {
                   child: ElevatedButton.icon(
                     onPressed: () async {
                       Navigator.pop(context);
-                      final image = await picker.pickImage(source: ImageSource.camera);
-                      if (image != null) {
-                        setState(() => _selectedImage = File(image.path));
-                      }
+                      // Image picker temporarily disabled for APK optimization
+                      // final image = await picker.pickImage(source: ImageSource.camera);
+                      // if (image != null) {
+                      //   setState(() => _selectedImage = File(image.path));
+                      // }
                     },
                     icon: const Icon(Icons.camera_alt),
                     label: const Text('Camera'),
@@ -100,10 +101,11 @@ class _BarProductFormDialogState extends State<BarProductFormDialog> {
                   child: ElevatedButton.icon(
                     onPressed: () async {
                       Navigator.pop(context);
-                      final image = await picker.pickImage(source: ImageSource.gallery);
-                      if (image != null) {
-                        setState(() => _selectedImage = File(image.path));
-                      }
+                      // Image picker temporarily disabled for APK optimization
+                      // final image = await picker.pickImage(source: ImageSource.gallery);
+                      // if (image != null) {
+                      //   setState(() => _selectedImage = File(image.path));
+                      // }
                     },
                     icon: const Icon(Icons.photo_library),
                     label: const Text('Galerie'),

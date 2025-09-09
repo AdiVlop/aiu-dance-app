@@ -1,0 +1,89 @@
+{
+  "name": "AIU Dance - Școala de Dans",
+  "short_name": "AIU Dance",
+  "description": "Aplicația pentru gestionarea școlii de dans AIU Dance - cursuri de salsa, bachata, kizomba și multe altele",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#673AB7",
+  "theme_color": "#673AB7",
+  "lang": "ro",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "categories": ["education", "lifestyle", "entertainment", "health"],
+  "screenshots": [
+    {
+      "src": "icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/Icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard Admin",
+      "short_name": "Admin",
+      "description": "Accesează dashboard-ul de administrare",
+      "url": "/admin",
+      "icons": [
+        {
+          "src": "icons/Icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Cursuri",
+      "short_name": "Cursuri",
+      "description": "Vezi cursurile disponibile",
+      "url": "/courses",
+      "icons": [
+        {
+          "src": "icons/Icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Portofel",
+      "short_name": "Wallet",
+      "description": "Gestionează portofelul digital",
+      "url": "/wallet",
+      "icons": [
+        {
+          "src": "icons/Icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

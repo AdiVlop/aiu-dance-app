@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:aiu_dance/utils/logger.dart';
-// import 'package:fl_chart/fl_chart.dart'; // Temporar eliminat pentru optimizare APK
+import 'package:fl_chart/fl_chart.dart';
 
 class AdminStatsScreen extends StatefulWidget {
   const AdminStatsScreen({super.key});
@@ -127,8 +127,7 @@ class _AdminStatsScreenState extends State<AdminStatsScreen> {
     );
   }
 
-  // Charts temporarily disabled for APK optimization
-  /*
+  // Charts activated for admin dashboard
   List<PieChartSectionData> _getRolePieChartData() {
     final colors = [Colors.blue, Colors.green, Colors.red, Colors.orange];
     int colorIndex = 0;
@@ -175,7 +174,6 @@ class _AdminStatsScreenState extends State<AdminStatsScreen> {
       );
     }).toList();
   }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -281,20 +279,13 @@ class _AdminStatsScreenState extends State<AdminStatsScreen> {
                           const SizedBox(height: 16),
                           SizedBox(
                             height: 200,
-                            child: const Center(
-                              child: Text(
-                                'Graficele sunt temporar dezactivate\npentru optimizarea aplicației',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, color: Colors.grey),
+                            child: PieChart(
+                              PieChartData(
+                                sections: _getRolePieChartData(),
+                                centerSpaceRadius: 40,
+                                sectionsSpace: 2,
                               ),
                             ),
-                            // child: PieChart(
-                            //   PieChartData(
-                            //     sections: _getRolePieChartData(),
-                            //     centerSpaceRadius: 40,
-                            //     sectionsSpace: 2,
-                            //   ),
-                            // ),
                           ),
                         ],
                       ),
@@ -317,48 +308,41 @@ class _AdminStatsScreenState extends State<AdminStatsScreen> {
                           const SizedBox(height: 16),
                           SizedBox(
                             height: 200,
-                            child: const Center(
-                              child: Text(
-                                'Graficele sunt temporar dezactivate\npentru optimizarea aplicației',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, color: Colors.grey),
+                            child: BarChart(
+                              BarChartData(
+                                alignment: BarChartAlignment.spaceAround,
+                                maxY: _categoryDistribution.values.isEmpty 
+                                    ? 10 
+                                    : _categoryDistribution.values.reduce((a, b) => a > b ? a : b).toDouble() + 2,
+                                barGroups: _getCategoryBarChartData(),
+                                titlesData: FlTitlesData(
+                                  leftTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: true),
+                                  ),
+                                  bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: true,
+                                      getTitlesWidget: (value, meta) {
+                                        final categories = _categoryDistribution.keys.toList();
+                                        if (value.toInt() < categories.length) {
+                                          return Text(
+                                            categories[value.toInt()],
+                                            style: const TextStyle(fontSize: 10),
+                                          );
+                                        }
+                                        return const Text('');
+                                      },
+                                    ),
+                                  ),
+                                  topTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false),
+                                  ),
+                                  rightTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false),
+                                  ),
+                                ),
                               ),
                             ),
-                            // child: BarChart(
-                            //   BarChartData(
-                            //     alignment: BarChartAlignment.spaceAround,
-                            //     maxY: _categoryDistribution.values.isEmpty 
-                            //         ? 10 
-                            //         : _categoryDistribution.values.reduce((a, b) => a > b ? a : b).toDouble() + 2,
-                            //     barGroups: _getCategoryBarChartData(),
-                            //     titlesData: FlTitlesData(
-                            //       leftTitles: const AxisTitles(
-                            //         sideTitles: SideTitles(showTitles: true),
-                            //       ),
-                            //       bottomTitles: AxisTitles(
-                            //         sideTitles: SideTitles(
-                            //           showTitles: true,
-                            //           getTitlesWidget: (value, meta) {
-                            //             final categories = _categoryDistribution.keys.toList();
-                            //             if (value.toInt() < categories.length) {
-                            //               return Text(
-                            //                 categories[value.toInt()],
-                            //                 style: const TextStyle(fontSize: 10),
-                            //               );
-                            //             }
-                            //             return const Text('');
-                            //           },
-                            //         ),
-                            //       ),
-                            //       topTitles: const AxisTitles(
-                            //         sideTitles: SideTitles(showTitles: false),
-                            //       ),
-                            //       rightTitles: const AxisTitles(
-                            //         sideTitles: SideTitles(showTitles: false),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
                           ),
                         ],
                       ),

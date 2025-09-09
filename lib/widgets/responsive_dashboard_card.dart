@@ -44,8 +44,13 @@ class ResponsiveDashboardCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
             child: InkWell(
-              onTap: onTap,
+              onTap: onTap != null ? () {
+                print('Card tapped: $subtitle');
+                onTap!();
+              } : null,
               borderRadius: BorderRadius.circular(16),
+              splashColor: color.withValues(alpha: 0.1),
+              highlightColor: color.withValues(alpha: 0.05),
               child: Container(
                 padding: const EdgeInsets.all(12), // Smaller padding
                 child: Column(
@@ -101,6 +106,16 @@ class ResponsiveDashboardCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
+                    
+                    // Click indicator for interactive cards
+                    if (onTap != null) ...[
+                      const SizedBox(height: 4),
+                      Icon(
+                        Icons.touch_app,
+                        size: 12,
+                        color: Colors.grey.shade400,
+                      ),
+                    ],
                   ],
                 ),
               ),
