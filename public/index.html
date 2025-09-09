@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIU Dance - Școala de Dans</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #673AB7 0%, #9C27B0 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+        }
+        .logo {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #FF6F00;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .features {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .feature h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .feature p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎭</div>
+        <h1>AIU Dance</h1>
+        <p class="subtitle">Școala de Dans</p>
+        
+        <a href="/download.html" class="btn">📱 Descarcă Aplicația</a>
+        <a href="https://aiu-dance.web.app" class="btn btn-secondary">🌐 Versiunea Web</a>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎓</div>
+                <h3>Cursuri de Dans</h3>
+                <p>Salsa, Bachata, Kizomba și multe altele</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Portofel Digital</h3>
+                <p>Plăți rapide și sigure</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>QR Check-in</h3>
+                <p>Prezență automată la cursuri</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🍹</div>
+                <h3>Bar Digital</h3>
+                <p>Comenzi și plăți prin QR</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

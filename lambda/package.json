@@ -1,0 +1,43 @@
+{
+  "name": "aiu-dance-lambda",
+  "version": "1.0.0",
+  "description": "AWS Lambda functions for AIU Dance app - Stripe integration and webhooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "zip -r function.zip . -x '*.git*' '*.DS_Store*' 'node_modules/*' '*.zip'",
+    "build:checkout": "zip -r createCheckoutStripe.zip createCheckoutStripe.js package.json -x '*.git*' '*.DS_Store*' 'node_modules/*'",
+    "build:webhook": "zip -r stripe_webhook.zip stripe_webhook.js package.json -x '*.git*' '*.DS_Store*' 'node_modules/*'",
+    "deploy:checkout": "npm run build:checkout && aws lambda update-function-code --function-name aiu-dance-create-checkout --zip-file fileb://createCheckoutStripe.zip",
+    "deploy:webhook": "npm run build:webhook && aws lambda update-function-code --function-name aiu-dance-stripe-webhook --zip-file fileb://stripe_webhook.zip",
+    "deploy:all": "npm run deploy:checkout && npm run deploy:webhook"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "stripe",
+    "supabase",
+    "flutter",
+    "dance"
+  ],
+  "author": "AIU Dance Team",
+  "license": "MIT",
+  "dependencies": {
+    "stripe": "^14.12.0",
+    "@supabase/supabase-js": "^2.38.4"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1531.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
+
+
+
+
+
+
+

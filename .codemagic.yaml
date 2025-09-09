@@ -1,0 +1,47 @@
+workflows:
+  aiu_dance_build:
+    name: Build AIU Dance App
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      vars:
+        XCODE_PROJECT: "ios/Runner.xcworkspace"
+        XCODE_SCHEME: "Runner"
+        PACKAGE_NAME: "com.aiudance.app"
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Flutter analyze
+        script: |
+          flutter analyze
+      - name: Flutter test
+        script: |
+          flutter test
+      - name: Build APK
+        script: |
+          flutter build apk --release
+      - name: Build iOS
+        script: |
+          flutter build ios --release --no-codesign
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/ios/iphoneos/Runner.app
+    publishing:
+      email:
+        recipients:
+          - adrian@payai.ro
+      slack:
+        channel: '#aiu-dance'
+        notify_on_build_start: true
+        notify_on_build_success: true
+        notify_on_build_fail: true
+
+
+
+
+
+
+
+

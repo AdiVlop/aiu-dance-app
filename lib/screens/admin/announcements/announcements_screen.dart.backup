@@ -1,0 +1,493 @@
+import 'package:flutter/material.dart';
+import '../../../services/admin_service.dart';
+import 'widgets/announcement_card.dart';
+import 'widgets/announcement_form_dialog.dart';
+import 'widgets/social_media_dialog.dart';
+
+/// Ecran pentru gestionarea anunțurilor media
+/// Permite crearea și editarea anunțurilor pentru Facebook, Instagram, TikTok
+class AnnouncementsScreen extends StatefulWidget {
+  const AnnouncementsScreen({super.key});
+
+  @override
+  State<AnnouncementsScreen> createState() => _AnnouncementsScreenState();
+}
+
+class _AnnouncementsScreenState extends State<AnnouncementsScreen> {
+  final AdminService _adminService = AdminService();
+  List<Map<String, dynamic>> _announcements = [];
+  bool _isLoading = true;
+  String _searchQuery = '';
+  String _platformFilter = 'all';
+  String _statusFilter = 'all';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAnnouncements();
+  }
+
+  Future<void> _loadAnnouncements() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final announcements = await _adminService.getAnnouncements();
+      setState(() {
+        _announcements = announcements;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      _showErrorSnackBar('Eroare la încărcarea anunțurilor: $e');
+    }
+  }
+
+  void _showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  void _showSuccessSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.green,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  List<Map<String, dynamic>> get _filteredAnnouncements {
+    return _announcements.where((announcement) {
+      final matchesSearch = announcement['title'].toString().toLowerCase().contains(_searchQuery.toLowerCase()) ||
+                           announcement['description'].toString().toLowerCase().contains(_searchQuery.toLowerCase());
+      
+      final matchesPlatform = _platformFilter == 'all' || announcement['platform'] == _platformFilter;
+      final matchesStatus = _statusFilter == 'all' || announcement['status'] == _statusFilter;
+      
+      return matchesSearch && matchesPlatform && matchesStatus;
+    }).toList();
+  }
+
+  Future<void> _addAnnouncement() async {
+    final result = await showDialog<Map<String, dynamic>>(
+      context: context,
+      builder: (context) => const AnnouncementFormDialog(),
+    );
+
+    if (result != null) {
+      try {
+        await _adminService.addAnnouncement(result);
+        await _loadAnnouncements();
+        _showSuccessSnackBar('Anunț adăugat cu succes!');
+      } catch (e) {
+        _showErrorSnackBar('Eroare la adăugarea anunțului: $e');
+      }
+    }
+  }
+
+  Future<void> _editAnnouncement(Map<String, dynamic> announcement) async {
+    final result = await showDialog<Map<String, dynamic>>(
+      context: context,
+      builder: (context) => AnnouncementFormDialog(announcement: announcement),
+    );
+
+    if (result != null) {
+      try {
+        await _adminService.updateAnnouncement(announcement['id'], result);
+        await _loadAnnouncements();
+        _showSuccessSnackBar('Anunț actualizat cu succes!');
+      } catch (e) {
+        _showErrorSnackBar('Eroare la actualizarea anunțului: $e');
+      }
+    }
+  }
+
+  Future<void> _deleteAnnouncement(String announcementId, String announcementTitle) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Șterge anunț'),
+        content: Text('Ești sigur că vrei să ștergi anunțul "$announcementTitle"? Această acțiune nu poate fi anulată.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Anulează'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+            ),
+            child: const Text('Șterge'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      try {
+        await _adminService.deleteAnnouncement(announcementId);
+        await _loadAnnouncements();
+        _showSuccessSnackBar('Anunț șters cu succes!');
+      } catch (e) {
+        _showErrorSnackBar('Eroare la ștergerea anunțului: $e');
+      }
+    }
+  }
+
+  void _publishToSocialMedia(Map<String, dynamic> announcement) {
+    showDialog(
+      context: context,
+      builder: (context) => SocialMediaDialog(announcement: announcement),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Gestionare Anunțuri'),
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          // Header
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Gestionare Anunțuri',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Creează și gestionează anunțurile pentru social media',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ],
+              ),
+              ElevatedButton.icon(
+                onPressed: _addAnnouncement,
+                icon: const Icon(Icons.add),
+                label: const Text('Creează anunț'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green.shade600,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                ),
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: 32),
+
+          // Statistics Cards
+          _buildStatisticsCards(),
+          
+          const SizedBox(height: 32),
+
+          // Filters and Search
+          _buildFiltersAndSearch(),
+          
+          const SizedBox(height: 24),
+
+          // Announcements List
+          Expanded(
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _filteredAnnouncements.isEmpty
+                    ? _buildEmptyState()
+                    : _buildAnnouncementsList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStatisticsCards() {
+    final totalAnnouncements = _announcements.length;
+    final publishedAnnouncements = _announcements.where((a) => a['status'] == 'published').length;
+    final draftAnnouncements = _announcements.where((a) => a['status'] == 'draft').length;
+    final scheduledAnnouncements = _announcements.where((a) => a['status'] == 'scheduled').length;
+
+    return Row(
+      children: [
+        Expanded(
+          child: _buildStatCard(
+            title: 'Total Anunțuri',
+            value: totalAnnouncements.toString(),
+            icon: Icons.announcement,
+            color: Colors.blue,
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: _buildStatCard(
+            title: 'Publicate',
+            value: publishedAnnouncements.toString(),
+            icon: Icons.published_with_changes,
+            color: Colors.green,
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: _buildStatCard(
+            title: 'Ciorne',
+            value: draftAnnouncements.toString(),
+            icon: Icons.edit_note,
+            color: Colors.orange,
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: _buildStatCard(
+            title: 'Programate',
+            value: scheduledAnnouncements.toString(),
+            icon: Icons.schedule,
+            color: Colors.purple,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStatCard({
+    required String title,
+    required String value,
+    required IconData icon,
+    required Color color,
+  }) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                icon,
+                color: color,
+                size: 20,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    value,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: color,
+                    ),
+                  ),
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFiltersAndSearch() {
+    return Column(
+      children: [
+        // Search
+        TextField(
+          onChanged: (value) {
+            setState(() {
+              _searchQuery = value;
+            });
+          },
+          decoration: InputDecoration(
+            hintText: 'Caută după titlu sau conținut...',
+            prefixIcon: const Icon(Icons.search),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            filled: true,
+            fillColor: Colors.grey.shade50,
+          ),
+        ),
+        
+        const SizedBox(height: 16),
+        
+        // Filters
+        Row(
+          children: [
+            // Platform Filter
+            Expanded(
+              child: DropdownButtonFormField<String>(
+                value: _platformFilter,
+                decoration: InputDecoration(
+                  labelText: 'Platformă',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey.shade50,
+                ),
+                items: const [
+                  DropdownMenuItem(value: 'all', child: Text('Toate')),
+                  DropdownMenuItem(value: 'facebook', child: Text('Facebook')),
+                  DropdownMenuItem(value: 'instagram', child: Text('Instagram')),
+                  DropdownMenuItem(value: 'tiktok', child: Text('TikTok')),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    _platformFilter = value!;
+                  });
+                },
+              ),
+            ),
+            
+            const SizedBox(width: 16),
+            
+            // Status Filter
+            Expanded(
+              child: DropdownButtonFormField<String>(
+                value: _statusFilter,
+                decoration: InputDecoration(
+                  labelText: 'Status',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey.shade50,
+                ),
+                items: const [
+                  DropdownMenuItem(value: 'all', child: Text('Toate')),
+                  DropdownMenuItem(value: 'published', child: Text('Publicate')),
+                  DropdownMenuItem(value: 'draft', child: Text('Ciorne')),
+                  DropdownMenuItem(value: 'scheduled', child: Text('Programate')),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    _statusFilter = value!;
+                  });
+                },
+              ),
+            ),
+            
+            const SizedBox(width: 16),
+            
+            // Refresh button
+            ElevatedButton.icon(
+              onPressed: _loadAnnouncements,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Actualizează'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue.shade600,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAnnouncementsList() {
+    return ListView.builder(
+      itemCount: _filteredAnnouncements.length,
+      itemBuilder: (context, index) {
+        final announcement = _filteredAnnouncements[index];
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 12),
+          child: AnnouncementCard(
+            announcement: announcement,
+            onEdit: () => _editAnnouncement(announcement),
+            onDelete: () => _deleteAnnouncement(announcement['id'], announcement['title']),
+            onDistribute: () => _publishToSocialMedia(announcement),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.announcement_outlined,
+            size: 64,
+            color: Colors.grey.shade400,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Nu s-au găsit anunțuri',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey.shade600,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Încearcă să modifici filtrele de căutare sau creează un anunț nou',
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey.shade500,
+            ),
+          ),
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: _addAnnouncement,
+            icon: const Icon(Icons.add),
+            label: const Text('Creează primul anunț'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green.shade600,
+              foregroundColor: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
