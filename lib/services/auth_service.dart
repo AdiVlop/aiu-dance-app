@@ -149,6 +149,23 @@ class AuthService {
     }
   }
 
+  /// Reset password for user
+  static Future<void> resetPassword(String email) async {
+    try {
+      Logger.info('Attempting to reset password for email: $email');
+      
+      await _client.auth.resetPasswordForEmail(
+        email,
+        redirectTo: 'https://aiu-dance.web.app/reset-password',
+      );
+      
+      Logger.info('✅ Password reset email sent to $email');
+    } catch (e) {
+      Logger.error('Error resetting password', e);
+      rethrow;
+    }
+  }
+
   /// Sign out
   static Future<void> signOut() async {
     try {

@@ -379,31 +379,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(height: 20),
                       
                       // Action Buttons
-                      Row(
+                      Column(
                         children: [
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: _isEditing ? _updateProfile : () => setState(() => _isEditing = true),
-                              icon: Icon(_isEditing ? Icons.save : Icons.edit),
-                              label: Text(_isEditing ? 'Salvează' : 'Editează'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: _isEditing ? Colors.green : Colors.blue,
-                                foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(vertical: 15),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton.icon(
+                                  onPressed: _isEditing ? _updateProfile : () => setState(() => _isEditing = true),
+                                  icon: Icon(_isEditing ? Icons.save : Icons.edit),
+                                  label: Text(_isEditing ? 'Salvează' : 'Editează'),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: _isEditing ? Colors.green : Colors.blue,
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(vertical: 15),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                              const SizedBox(width: 15),
+                              Expanded(
+                                child: ElevatedButton.icon(
+                                  onPressed: () => _showLogoutDialog(),
+                                  icon: const Icon(Icons.logout),
+                                  label: const Text('Deconectare'),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.red,
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(vertical: 15),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 15),
-                          Expanded(
+                          const SizedBox(height: 15),
+                          // Reset Password Button
+                          SizedBox(
+                            width: double.infinity,
                             child: ElevatedButton.icon(
-                              onPressed: () => _showLogoutDialog(),
-                              icon: const Icon(Icons.logout),
-                              label: const Text('Deconectare'),
+                              onPressed: () => _showResetPasswordDialog(),
+                              icon: const Icon(Icons.lock_reset),
+                              label: const Text('Resetare Parolă'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
+                                backgroundColor: Colors.orange,
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(vertical: 15),
                                 shape: RoundedRectangleBorder(
@@ -607,6 +629,60 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _showResetPasswordDialog() async {
+    final user = Supabase.instance.client.auth.currentUser;
+    if (user == null || user.email == null) return;
+
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Resetare Parolă'),
+        content: Text(
+          'Vrei să primești un email de resetare a parolei la adresa:\n\n${user.email}\n\n'
+          'Vei fi redirecționat către pagina de resetare a parolei.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Anulează'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+            child: const Text('Trimite Email'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      try {
+        await Supabase.instance.client.auth.resetPasswordForEmail(
+          user.email!,
+          redirectTo: 'https://aiu-dance.web.app/reset-password',
+        );
+        
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('✅ Email de resetare trimis cu succes!'),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Eroare la trimiterea email-ului: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    }
   }
 
   Widget _buildEditableProfileItem(String label, TextEditingController controller, IconData icon) {

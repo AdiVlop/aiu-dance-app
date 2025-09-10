@@ -5,6 +5,7 @@ import 'config/supabase_config.dart';
 import 'services/auth_service.dart';
 import 'services/stripe_service.dart';
 import 'screens/auth/register_screen.dart';
+import 'screens/auth/forgot_password_screen.dart';
 import 'screens/admin/admin_dashboard_screen.dart';
 import 'screens/instructor/instructor_dashboard_screen.dart';
 import 'screens/dashboard/dashboard_screen.dart';
@@ -576,6 +577,24 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  
+                  // Forgot Password Link
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPasswordScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Ai uitat parola?',
+                      style: TextStyle(color: Colors.purple),
+                    ),
+                  ),
+                  
+                  const SizedBox(height: 10),
                   
                   // Register Link
                   TextButton(

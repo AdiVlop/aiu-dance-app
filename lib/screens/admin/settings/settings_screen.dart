@@ -393,6 +393,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   _clearCache,
                 ),
                 _buildActionButton(
+                  'Resetare Parolă',
+                  Icons.lock_reset,
+                  Colors.orange,
+                  _resetPassword,
+                ),
+                _buildActionButton(
                   'Restart Aplicație',
                   Icons.restart_alt,
                   Colors.red,
@@ -780,6 +786,68 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Eroare la resetare: $e')),
         );
+      }
+    }
+  }
+
+  Future<void> _resetPassword() async {
+    final user = Supabase.instance.client.auth.currentUser;
+    if (user == null || user.email == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Nu s-a putut obține adresa de email'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Resetare Parolă Admin'),
+        content: Text(
+          'Vrei să primești un email de resetare a parolei la adresa:\n\n${user.email}\n\n'
+          'Vei fi redirecționat către pagina de resetare a parolei.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Anulează'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+            child: const Text('Trimite Email'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      try {
+        await Supabase.instance.client.auth.resetPasswordForEmail(
+          user.email!,
+          redirectTo: 'https://aiu-dance.web.app/reset-password',
+        );
+        
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('✅ Email de resetare trimis cu succes!'),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Eroare la trimiterea email-ului: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
     }
   }
