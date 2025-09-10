@@ -193,7 +193,7 @@ class AnnouncementCard extends StatelessWidget {
         text = 'Studenți';
         break;
       case 'instructor':
-        color = Colors.purple;
+        color = const Color(0xFF9C0033);
         text = 'Instructori';
         break;
       default:
@@ -343,7 +343,7 @@ class AnnouncementCard extends StatelessWidget {
                   context,
                   'Instagram',
                   Icons.camera_alt,
-                  Colors.purple.shade600,
+                  const Color(0xFF7A0029),
                   () => onShare?.call('instagram'),
                 ),
                 _buildShareOption(

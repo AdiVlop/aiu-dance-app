@@ -118,7 +118,7 @@ class _AdminCoursesScreenState extends State<AdminCoursesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Administrare Cursuri'),
-        backgroundColor: Colors.purple.shade600,
+        backgroundColor: const Color(0xFF7A0029),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -169,7 +169,7 @@ class _AdminCoursesScreenState extends State<AdminCoursesScreen> {
                     'Total Cursuri',
                     _courses.length.toString(),
                     Icons.school,
-                    Colors.purple,
+                    const Color(0xFF9C0033),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -222,7 +222,7 @@ class _AdminCoursesScreenState extends State<AdminCoursesScreen> {
         onPressed: () => _showCourseDialog(),
         icon: const Icon(Icons.add),
         label: const Text('Curs Nou'),
-        backgroundColor: Colors.purple.shade600,
+        backgroundColor: const Color(0xFF7A0029),
         foregroundColor: Colors.white,
       ),
     );
@@ -237,8 +237,8 @@ class _AdminCoursesScreenState extends State<AdminCoursesScreen> {
         setState(() => _selectedCategory = value);
       },
       backgroundColor: Colors.white,
-      selectedColor: Colors.purple.shade100,
-      checkmarkColor: Colors.purple.shade600,
+      selectedColor: const Color(0xFFE6CCD1),
+      checkmarkColor: const Color(0xFF7A0029),
     );
   }
 

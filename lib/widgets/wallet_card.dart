@@ -36,7 +36,7 @@ class WalletCard extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: [
               Colors.blue[600]!,
-              Colors.purple[600]!,
+              const Color(0xFF9C0033)[600]!,
             ],
           ),
         ),
@@ -185,7 +185,7 @@ class WalletCard extends StatelessWidget {
             icon: Icons.swap_horiz,
             label: 'Transfer',
             onTap: onTransfer,
-            color: Colors.purple,
+            color: const Color(0xFF9C0033),
           ),
         ),
       ],
@@ -427,7 +427,7 @@ class WalletBalanceWidget extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: [
               Colors.blue[400]!,
-              Colors.purple[400]!,
+              const Color(0xFF9C0033)[400]!,
             ],
           ),
           borderRadius: BorderRadius.circular(12),

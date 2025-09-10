@@ -146,7 +146,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                           icon: Icons.account_balance_wallet,
                           title: 'Profit',
                           subtitle: '${_financialStats['profit']?.toStringAsFixed(0) ?? '0'} RON',
-                          color: Colors.purple,
+                          color: const Color(0xFF9C0033),
                         ),
                       ],
                     ),
@@ -505,7 +505,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   sectionsSpace: 2,
                   centerSpaceRadius: 40,
                   sections: entries.asMap().entries.map((e) {
-                    final colors = [Colors.blue, Colors.green, Colors.orange, Colors.purple, Colors.red];
+                    final colors = [Colors.blue, Colors.green, Colors.orange, const Color(0xFF9C0033), Colors.red];
                     return PieChartSectionData(
                       color: colors[e.key % colors.length],
                       value: e.value.value.toDouble(),

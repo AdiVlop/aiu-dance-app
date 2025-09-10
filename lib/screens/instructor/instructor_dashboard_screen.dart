@@ -47,7 +47,7 @@ class _InstructorDashboardScreenState extends State<InstructorDashboardScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Instructor: $_instructorName'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -87,7 +87,7 @@ class _InstructorDashboardScreenState extends State<InstructorDashboardScreen> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        selectedItemColor: Colors.purple,
+        selectedItemColor: const Color(0xFF9C0033),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
@@ -122,7 +122,7 @@ class _InstructorDashboardScreenState extends State<InstructorDashboardScreen> {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.purple,
+              color: const Color(0xFF9C0033),
             ),
           ),
           const SizedBox(height: 20),

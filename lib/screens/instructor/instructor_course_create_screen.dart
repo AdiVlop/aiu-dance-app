@@ -185,7 +185,7 @@ class _InstructorCourseCreateScreenState extends State<InstructorCourseCreateScr
     return Scaffold(
       appBar: AppBar(
         title: const Text('Creează Curs Nou'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -358,9 +358,9 @@ class _InstructorCourseCreateScreenState extends State<InstructorCourseCreateScr
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.purple.shade50,
+                  color: const Color(0xFFF5E6EA),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.purple.shade200),
+                  border: Border.all(color: const Color(0xFFD199A3)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -370,14 +370,14 @@ class _InstructorCourseCreateScreenState extends State<InstructorCourseCreateScr
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple.shade700,
+                        color: const Color(0xFF5C001F),
                       ),
                     ),
                     const SizedBox(height: 12),
 
                     // Date Picker
                     ListTile(
-                      leading: Icon(Icons.calendar_today, color: Colors.purple.shade600),
+                      leading: Icon(Icons.calendar_today, color: const Color(0xFF7A0029)),
                       title: const Text('Data cursului'),
                       subtitle: Text(
                         DateFormat('dd MMMM yyyy', 'ro_RO').format(_selectedDate),
@@ -396,7 +396,7 @@ class _InstructorCourseCreateScreenState extends State<InstructorCourseCreateScr
                       children: [
                         Expanded(
                           child: ListTile(
-                            leading: Icon(Icons.access_time, color: Colors.purple.shade600),
+                            leading: Icon(Icons.access_time, color: const Color(0xFF7A0029)),
                             title: const Text('Ora de început'),
                             subtitle: Text(
                               _startTime.format(context),
@@ -412,7 +412,7 @@ class _InstructorCourseCreateScreenState extends State<InstructorCourseCreateScr
                         const SizedBox(width: 8),
                         Expanded(
                           child: ListTile(
-                            leading: Icon(Icons.access_time_filled, color: Colors.purple.shade600),
+                            leading: Icon(Icons.access_time_filled, color: const Color(0xFF7A0029)),
                             title: const Text('Ora de sfârșit'),
                             subtitle: Text(
                               _endTime.format(context),
@@ -453,7 +453,7 @@ class _InstructorCourseCreateScreenState extends State<InstructorCourseCreateScr
                     style: const TextStyle(fontSize: 16),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
+                    backgroundColor: const Color(0xFF9C0033),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

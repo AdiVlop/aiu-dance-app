@@ -321,7 +321,7 @@ class _CourseCardState extends State<CourseCard> {
       case 'bachata':
         return Colors.red.shade600;
       case 'kizomba':
-        return Colors.purple.shade600;
+        return const Color(0xFF7A0029);
       case 'salsa':
         return Colors.orange.shade600;
       case 'tango':

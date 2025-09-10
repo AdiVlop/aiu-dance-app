@@ -83,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Înregistrare'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -116,7 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         borderRadius: BorderRadius.circular(50),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.purple.withOpacity(0.3),
+                            color: const Color(0xFF9C0033).withOpacity(0.3),
                             blurRadius: 20,
                             spreadRadius: 5,
                           ),
@@ -127,7 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: Icon(
                             Icons.music_note,
                             size: 50,
-                            color: Colors.purple,
+                            color: const Color(0xFF9C0033),
                           ),
                         ),
                     ),
@@ -139,7 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple,
+                        color: const Color(0xFF9C0033),
                       ),
                     ),
                     const SizedBox(height: 30),
@@ -165,7 +165,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Colors.purple,
+                              color: const Color(0xFF9C0033),
                             ),
                           ),
                           const SizedBox(height: 15),
@@ -315,7 +315,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: ElevatedButton(
                         onPressed: _isLoading ? null : _register,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
+                          backgroundColor: const Color(0xFF9C0033),
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -338,7 +338,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       child: const Text(
                         'Ai deja cont? Conectează-te',
-                        style: TextStyle(color: Colors.purple),
+                        style: TextStyle(color: const Color(0xFF9C0033)),
                       ),
                     ),
                   ],

@@ -151,7 +151,7 @@ class _AdminStatsScreenState extends State<AdminStatsScreen> {
   }
 
   List<BarChartGroupData> _getCategoryBarChartData() {
-    final colors = [Colors.purple, Colors.blue, Colors.green, Colors.orange, Colors.red];
+    final colors = [const Color(0xFF9C0033), Colors.blue, Colors.green, Colors.orange, Colors.red];
     int colorIndex = 0;
     
     return _categoryDistribution.entries.map((entry) {
@@ -180,7 +180,7 @@ class _AdminStatsScreenState extends State<AdminStatsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Statistici Globale'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -235,7 +235,7 @@ class _AdminStatsScreenState extends State<AdminStatsScreen> {
                           'Studenți',
                           _totalStudents.toString(),
                           Icons.school,
-                          Colors.purple,
+                          const Color(0xFF9C0033),
                         ),
                       ),
                     ],

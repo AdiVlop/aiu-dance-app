@@ -110,7 +110,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Notificări${unreadCount > 0 ? ' ($unreadCount)' : ''}'),
-        backgroundColor: Colors.purple.shade700,
+        backgroundColor: const Color(0xFF5C001F),
         foregroundColor: Colors.white,
         actions: [
           PopupMenuButton<String>(
@@ -191,7 +191,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
               child: Text(
                 'Toate',
                 style: TextStyle(
-                  color: _selectedFilter == 'all' ? Colors.purple : Colors.grey,
+                  color: _selectedFilter == 'all' ? const Color(0xFF9C0033) : Colors.grey,
                   fontWeight: _selectedFilter == 'all' ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
@@ -206,7 +206,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
               child: Text(
                 'Necitite',
                 style: TextStyle(
-                  color: _selectedFilter == 'unread' ? Colors.purple : Colors.grey,
+                  color: _selectedFilter == 'unread' ? const Color(0xFF9C0033) : Colors.grey,
                   fontWeight: _selectedFilter == 'unread' ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
@@ -423,7 +423,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
       case 'payment_authorization':
         return Colors.blue.shade100;
       case 'payment_confirmation':
-        return Colors.purple.shade100;
+        return const Color(0xFFE6CCD1);
       case 'course_update':
         return Colors.orange.shade100;
       default:

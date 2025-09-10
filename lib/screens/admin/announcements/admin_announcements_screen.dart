@@ -649,7 +649,7 @@ ${content}
       builder: (context) => AlertDialog(
         title: Row(
           children: [
-            Icon(Icons.share, color: Colors.purple.shade600),
+            Icon(Icons.share, color: const Color(0xFF7A0029)),
             const SizedBox(width: 8),
             const Text('Distribuire cu Media'),
           ],
@@ -716,7 +716,7 @@ ${content}
               _buildPlatformButton(
                 'Instagram',
                 Icons.camera_alt,
-                Colors.purple,
+                const Color(0xFF9C0033),
                 () => _shareToInstagramWithMedia(message, mediaUrl, mediaType),
               ),
               const SizedBox(height: 8),
@@ -888,7 +888,7 @@ ${content}
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Instagram și imaginea s-au deschis!'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         duration: Duration(seconds: 4),
       ),
     );

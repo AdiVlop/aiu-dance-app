@@ -408,7 +408,7 @@ class _QRAttendanceAdminScreenState extends State<QRAttendanceAdminScreen> {
           children: [
             const Row(
               children: [
-                Icon(Icons.history, color: Colors.purple),
+                Icon(Icons.history, color: const Color(0xFF9C0033)),
                 SizedBox(width: 8),
                 Text(
                   'Prezențe Recente',

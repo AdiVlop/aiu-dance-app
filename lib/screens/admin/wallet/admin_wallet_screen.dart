@@ -1181,7 +1181,7 @@ class _AdminWalletScreenState extends State<AdminWalletScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Master Wallet Management'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -1270,7 +1270,7 @@ class _AdminWalletScreenState extends State<AdminWalletScreen> {
           Container(
             padding: const EdgeInsets.all(16),
             child: Card(
-              color: Colors.purple.withOpacity(0.1),
+              color: const Color(0xFF9C0033).withOpacity(0.1),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
@@ -1278,12 +1278,12 @@ class _AdminWalletScreenState extends State<AdminWalletScreen> {
                   children: [
                     Column(
                       children: [
-                        const Icon(Icons.account_balance_wallet, color: Colors.purple, size: 32),
+                        const Icon(Icons.account_balance_wallet, color: const Color(0xFF9C0033), size: 32),
                         const SizedBox(height: 8),
                         const Text('Sold Total', style: TextStyle(fontWeight: FontWeight.bold)),
                         Text(
                           '${_totalBalance.toStringAsFixed(2)} RON',
-                          style: const TextStyle(fontSize: 24, color: Colors.purple, fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontSize: 24, color: const Color(0xFF9C0033), fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -1340,7 +1340,7 @@ class _AdminWalletScreenState extends State<AdminWalletScreen> {
               child: Column(
                 children: [
                   const TabBar(
-                    labelColor: Colors.purple,
+                    labelColor: const Color(0xFF9C0033),
                     unselectedLabelColor: Colors.grey,
                     isScrollable: true,
                     tabs: [

@@ -188,7 +188,7 @@ class _SocialMediaDialogState extends State<SocialMediaDialog> {
               child: _buildPlatformCard(
                 'Instagram',
                 Icons.camera_alt,
-                Colors.purple.shade600,
+                const Color(0xFF7A0029),
                 _isInstagramLoggedIn,
                 () => _loginToInstagram(),
               ),
@@ -322,7 +322,7 @@ class _SocialMediaDialogState extends State<SocialMediaDialog> {
                 icon: const Icon(Icons.camera_alt),
                 label: const Text('Publică pe Instagram'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple.shade600,
+                  backgroundColor: const Color(0xFF7A0029),
                   foregroundColor: Colors.white,
                 ),
               ),

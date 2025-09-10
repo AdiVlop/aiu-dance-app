@@ -242,7 +242,7 @@ class _CourseFormDialogState extends State<CourseFormDialog> {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.purple.shade600,
+                color: const Color(0xFF7A0029),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16),
                   topRight: Radius.circular(16),
@@ -513,7 +513,7 @@ class _CourseFormDialogState extends State<CourseFormDialog> {
                     child: ElevatedButton(
                       onPressed: _isLoading ? null : _saveCourse,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple.shade600,
+                        backgroundColor: const Color(0xFF7A0029),
                         foregroundColor: Colors.white,
                       ),
                       child: _isLoading

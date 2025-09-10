@@ -80,7 +80,7 @@ class _StudentsEnrolledScreenState extends State<StudentsEnrolledScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Studenți Înscriși'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -149,7 +149,7 @@ class _StudentsEnrolledScreenState extends State<StudentsEnrolledScreen> {
                             margin: const EdgeInsets.only(bottom: 12),
                             child: ListTile(
                               leading: CircleAvatar(
-                                backgroundColor: Colors.purple,
+                                backgroundColor: const Color(0xFF9C0033),
                                 child: Text(
                                   profile['full_name']?.substring(0, 1).toUpperCase() ?? '?',
                                   style: const TextStyle(color: Colors.white),

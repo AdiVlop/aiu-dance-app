@@ -236,16 +236,16 @@ class _UserDetailsDialogState extends State<UserDetailsDialog> {
                               margin: const EdgeInsets.only(bottom: 8),
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Colors.purple.shade50,
+                                color: const Color(0xFFF5E6EA),
                                 borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.purple.shade200),
+                                border: Border.all(color: const Color(0xFFD199A3)),
                               ),
                               child: Row(
                                 children: [
                                   Icon(
                                     Icons.school,
                                     size: 16,
-                                    color: Colors.purple.shade600,
+                                    color: const Color(0xFF7A0029),
                                   ),
                                   const SizedBox(width: 8),
                                   Expanded(
@@ -253,7 +253,7 @@ class _UserDetailsDialogState extends State<UserDetailsDialog> {
                                       course,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.purple.shade700,
+                                        color: const Color(0xFF5C001F),
                                       ),
                                     ),
                                   ),

@@ -85,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         borderRadius: BorderRadius.circular(25),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.purple.withOpacity(0.2),
+                            color: const Color(0xFF9C0033).withOpacity(0.2),
                             blurRadius: 10,
                             offset: const Offset(0, 5),
                           ),
@@ -93,7 +93,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                       child: const Icon(
                         Icons.person,
-                        color: Colors.purple,
+                        color: const Color(0xFF9C0033),
                         size: 24,
                       ),
                     ),
@@ -201,21 +201,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15),
           decoration: BoxDecoration(
-            color: isSelected ? Colors.purple : Colors.transparent,
+            color: isSelected ? const Color(0xFF9C0033) : Colors.transparent,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
             children: [
               Icon(
                 icon,
-                color: isSelected ? Colors.white : Colors.purple,
+                color: isSelected ? Colors.white : const Color(0xFF9C0033),
                 size: 20,
               ),
               const SizedBox(height: 5),
               Text(
                 label,
                 style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.purple,
+                  color: isSelected ? Colors.white : const Color(0xFF9C0033),
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
@@ -246,7 +246,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               _buildStatCard('Portofel', '150 RON', Icons.account_balance_wallet, Colors.orange),
               const SizedBox(width: 15),
-              _buildStatCard('Puncte', '45', Icons.stars, Colors.purple),
+              _buildStatCard('Puncte', '45', Icons.stars, const Color(0xFF9C0033)),
             ],
           ),
           const SizedBox(height: 30),
@@ -280,7 +280,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildActionCard('Portofel', Icons.account_balance_wallet, Colors.teal, () {
                   setState(() => _selectedIndex = 2);
                 }),
-                _buildActionCard('Profil', Icons.person, Colors.purple, () {
+                _buildActionCard('Profil', Icons.person, const Color(0xFF9C0033), () {
                   setState(() => _selectedIndex = 3);
                 }),
                 _buildActionCard('Scanner QR', Icons.qr_code_scanner, Colors.indigo, () {

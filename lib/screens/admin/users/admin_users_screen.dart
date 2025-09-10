@@ -315,7 +315,7 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
                   children: [
                     Row(
                       children: [
-                        const Icon(Icons.people, size: 24, color: Colors.purple),
+                        const Icon(Icons.people, size: 24, color: const Color(0xFF9C0033)),
                         const SizedBox(width: 8),
                         const Expanded(
                           child: Text(
@@ -337,7 +337,7 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
                         icon: const Icon(Icons.refresh, size: 18),
                         label: const Text('Actualizează'),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
+                          backgroundColor: const Color(0xFF9C0033),
                           foregroundColor: Colors.white,
                         ),
                       ),
@@ -347,7 +347,7 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
               }
               return Row(
                 children: [
-                  const Icon(Icons.people, size: 28, color: Colors.purple),
+                  const Icon(Icons.people, size: 28, color: const Color(0xFF9C0033)),
                   const SizedBox(width: 12),
                   const Expanded(
                     child: Text(

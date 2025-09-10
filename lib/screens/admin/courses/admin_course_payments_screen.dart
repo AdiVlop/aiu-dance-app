@@ -198,7 +198,7 @@ class _AdminCoursePaymentsScreenState extends State<AdminCoursePaymentsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plăți Cursuri'),
-        backgroundColor: Colors.purple.shade700,
+        backgroundColor: const Color(0xFF5C001F),
         foregroundColor: Colors.white,
         actions: [
           IconButton(

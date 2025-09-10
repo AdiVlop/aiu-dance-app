@@ -263,7 +263,7 @@ class BarProductCard extends StatelessWidget {
       case 'cafea':
         return Colors.brown;
       case 'cocktail':
-        return Colors.purple;
+        return const Color(0xFF9C0033);
       case 'alcool':
         return Colors.red;
       case 'mancare':

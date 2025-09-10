@@ -225,7 +225,7 @@ class DashboardCardBuilder {
       icon: Icons.check_circle,
       title: attendanceCount.toString(),
       subtitle: 'Prezențe',
-      color: Colors.purple,
+      color: const Color(0xFF9C0033),
       onTap: onTap,
     );
   }

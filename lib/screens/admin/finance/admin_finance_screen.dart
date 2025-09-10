@@ -280,7 +280,7 @@ class _AdminFinanceScreenState extends State<AdminFinanceScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rapoarte Financiare'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(

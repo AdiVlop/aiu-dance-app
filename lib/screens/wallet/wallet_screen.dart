@@ -130,7 +130,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back, color: Colors.purple),
+                      icon: const Icon(Icons.arrow_back, color: const Color(0xFF9C0033)),
                     ),
                     const SizedBox(width: 15),
                     Container(
@@ -141,7 +141,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.purple.withOpacity(0.2),
+                            color: const Color(0xFF9C0033).withOpacity(0.2),
                             blurRadius: 10,
                             offset: const Offset(0, 5),
                           ),
@@ -162,7 +162,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+                          color: const Color(0xFF9C0033),
                         ),
                       ),
                     ),
@@ -183,14 +183,14 @@ class _WalletScreenState extends State<WalletScreen> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.purple.shade600,
-                      Colors.purple.shade400,
+                      const Color(0xFF7A0029),
+                      const Color(0xFFB8004A),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.purple.withOpacity(0.3),
+                      color: const Color(0xFF9C0033).withOpacity(0.3),
                       blurRadius: 15,
                       offset: const Offset(0, 8),
                     ),
@@ -294,8 +294,8 @@ class _WalletScreenState extends State<WalletScreen> {
                           ],
                         ),
                         child: const TabBar(
-                          indicatorColor: Colors.purple,
-                          labelColor: Colors.purple,
+                          indicatorColor: const Color(0xFF9C0033),
+                          labelColor: const Color(0xFF9C0033),
                           unselectedLabelColor: Colors.grey,
                           tabs: [
                             Tab(text: 'Tranzacții'),
@@ -433,7 +433,7 @@ class _WalletScreenState extends State<WalletScreen> {
           const SizedBox(height: 15),
           _buildStatCard('Tranzacții Luna Aceasta', '4', Icons.receipt, Colors.blue),
           const SizedBox(height: 15),
-          _buildStatCard('Cursuri Plătite', '3', Icons.school, Colors.purple),
+          _buildStatCard('Cursuri Plătite', '3', Icons.school, const Color(0xFF9C0033)),
         ],
       ),
     );

@@ -418,14 +418,14 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
         children: [
             CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
+              valueColor: AlwaysStoppedAnimation<Color>(const Color(0xFF9C0033)),
             ),
             SizedBox(height: 20),
             Text(
               'Se încarcă Dashboard Admin...',
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.purple,
+                color: const Color(0xFF9C0033),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -439,7 +439,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.purple, Colors.deepPurple],
+          colors: [const Color(0xFF9C0033), const Color(0xFF9C0033)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -555,7 +555,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                           child: Text(
                             _userProfile?['full_name']?.toString().substring(0, 1).toUpperCase() ?? 'A',
                             style: const TextStyle(
-                              color: Colors.purple,
+                              color: const Color(0xFF9C0033),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -658,7 +658,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.purple : Colors.transparent,
+          color: isSelected ? const Color(0xFF9C0033) : Colors.transparent,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
@@ -666,14 +666,14 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           children: [
             Icon(
               icon,
-              color: isSelected ? Colors.white : Colors.purple,
+              color: isSelected ? Colors.white : const Color(0xFF9C0033),
               size: 20,
             ),
             const SizedBox(height: 5),
             Text(
               title,
               style: TextStyle(
-                color: isSelected ? Colors.white : Colors.purple,
+                color: isSelected ? Colors.white : const Color(0xFF9C0033),
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
@@ -886,14 +886,14 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           children: [
             Row(
               children: [
-                Icon(icon, color: Colors.purple, size: 24),
+                Icon(icon, color: const Color(0xFF9C0033), size: 24),
                 const SizedBox(width: 10),
             Text(
               title,
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.purple,
+                    color: const Color(0xFF9C0033),
                   ),
                 ),
               ],
@@ -1055,7 +1055,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           ),
           child: Row(
           children: [
-              Icon(Icons.school, color: Colors.purple, size: 24),
+              Icon(Icons.school, color: const Color(0xFF9C0033), size: 24),
               const SizedBox(width: 15),
               Expanded(
                 child: Column(
@@ -1196,7 +1196,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           _buildQuickActionButton('Adaugă Utilizator', Icons.person_add, Colors.blue, () => _navigateToUsers()),
           _buildQuickActionButton('Creează Curs', Icons.add_circle, Colors.green, () => _navigateToCourses()),
           _buildQuickActionButton('Prezență QR', Icons.qr_code, Colors.teal, () => _navigateToQRAttendance()),
-          _buildQuickActionButton('Plăți Cursuri', Icons.payment, Colors.purple, () => _navigateToCoursePayments()),
+          _buildQuickActionButton('Plăți Cursuri', Icons.payment, const Color(0xFF9C0033), () => _navigateToCoursePayments()),
           _buildQuickActionButton('Portofel Admin', Icons.account_balance_wallet, Colors.indigo, () => _navigateToWallet()),
           _buildQuickActionButton('Generează Raport', Icons.description, Colors.orange, () => _navigateToReports()),
           _buildQuickActionButton('Setări', Icons.settings, Colors.grey, () => _navigateToSettings()),
@@ -1386,7 +1386,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 icon: const Icon(Icons.payment, size: 16),
                 label: const Text('Gestionează Plăți'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple,
+                  backgroundColor: const Color(0xFF9C0033),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
@@ -1682,7 +1682,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
       builder: (context) => AlertDialog(
         title: Row(
           children: [
-            Icon(Icons.settings, color: Colors.purple),
+            Icon(Icons.settings, color: const Color(0xFF9C0033)),
             const SizedBox(width: 10),
             Expanded(child: Text(title)),
           ],

@@ -719,7 +719,7 @@ class _AdminAttendanceScreenState extends State<AdminAttendanceScreen> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                const Icon(Icons.how_to_reg, size: 28, color: Colors.purple),
+                const Icon(Icons.how_to_reg, size: 28, color: const Color(0xFF9C0033)),
                 const SizedBox(width: 12),
                 const Text(
                   'Gestionare Prezență',

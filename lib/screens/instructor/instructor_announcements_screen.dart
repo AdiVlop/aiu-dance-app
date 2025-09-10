@@ -288,13 +288,13 @@ class _InstructorAnnouncementsScreenState extends State<InstructorAnnouncementsS
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.purple.shade50,
+                color: const Color(0xFFF5E6EA),
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.purple.shade200),
+                border: Border.all(color: const Color(0xFFD199A3)),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.app_registration, color: Colors.purple.shade600, size: 24),
+                  Icon(Icons.app_registration, color: const Color(0xFF7A0029), size: 24),
                   const SizedBox(width: 12),
                   const Expanded(
                     child: Column(
@@ -371,7 +371,7 @@ class _InstructorAnnouncementsScreenState extends State<InstructorAnnouncementsS
             icon: const Icon(Icons.app_registration),
             label: const Text('Doar în app'),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.purple,
+              backgroundColor: const Color(0xFF9C0033),
               foregroundColor: Colors.white,
             ),
           ),
@@ -971,7 +971,7 @@ ${content}
       builder: (context) => AlertDialog(
         title: Row(
           children: [
-            Icon(Icons.share, color: Colors.purple.shade600),
+            Icon(Icons.share, color: const Color(0xFF7A0029)),
             const SizedBox(width: 8),
             const Text('Distribuire cu Media'),
           ],
@@ -1038,7 +1038,7 @@ ${content}
               _buildPlatformButton(
                 'Instagram',
                 Icons.camera_alt,
-                Colors.purple,
+                const Color(0xFF9C0033),
                 () => _shareToInstagramWithMedia(message, mediaUrl, mediaType),
               ),
               const SizedBox(height: 8),
@@ -1171,7 +1171,7 @@ ${content}
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Instagram și imaginea s-au deschis! Creează un post nou și adaugă imaginea.'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         duration: Duration(seconds: 4),
       ),
     );
@@ -1284,7 +1284,7 @@ ${content}
     return Scaffold(
       appBar: AppBar(
         title: const Text('Anunțurile Mele'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -1451,11 +1451,11 @@ ${content}
                             const SizedBox(height: 12),
                             Row(
                               children: [
-                                Icon(Icons.people, size: 16, color: Colors.purple),
+                                Icon(Icons.people, size: 16, color: const Color(0xFF9C0033)),
                                 const SizedBox(width: 4),
                                 Text(_getTargetText(announcement['target_role'])),
                                 const SizedBox(width: 16),
-                                Icon(Icons.access_time, size: 16, color: Colors.purple),
+                                Icon(Icons.access_time, size: 16, color: const Color(0xFF9C0033)),
                                 const SizedBox(width: 4),
                                 Text(_formatDate(announcement['created_at'])),
                               ],
@@ -1496,7 +1496,7 @@ ${content}
                 ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showCreateDialog,
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         child: const Icon(Icons.add, color: Colors.white),
       ),
     );

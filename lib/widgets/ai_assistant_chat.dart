@@ -166,7 +166,7 @@ class _AiAssistantChatState extends State<AiAssistantChat> {
           children: [
             // Header with expand/collapse
             ListTile(
-              leading: const Icon(Icons.smart_toy, color: Colors.purple),
+              leading: const Icon(Icons.smart_toy, color: const Color(0xFF9C0033)),
               title: const Text(
                 'Asistent AI',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -248,7 +248,7 @@ class _AiAssistantChatState extends State<AiAssistantChat> {
                     IconButton(
                       onPressed: _isLoading ? null : () => _sendMessage(_controller.text),
                       icon: const Icon(Icons.send),
-                      color: Colors.purple,
+                      color: const Color(0xFF9C0033),
                     ),
                   ],
                 ),
@@ -293,7 +293,7 @@ class MessageBubble extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 4),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: message.isUser ? Colors.purple : Colors.grey[200],
+          color: message.isUser ? const Color(0xFF9C0033) : Colors.grey[200],
           borderRadius: BorderRadius.circular(16),
         ),
         constraints: BoxConstraints(

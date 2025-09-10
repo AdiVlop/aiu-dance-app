@@ -174,7 +174,7 @@ class _InstructorCoursesScreenState extends State<InstructorCoursesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cursurile Mele'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -277,11 +277,11 @@ class _InstructorCoursesScreenState extends State<InstructorCoursesScreen> {
                             const SizedBox(height: 12),
                             Row(
                               children: [
-                                Icon(Icons.category, size: 16, color: Colors.purple),
+                                Icon(Icons.category, size: 16, color: const Color(0xFF9C0033)),
                                 const SizedBox(width: 4),
                                 Text(course['category'] ?? 'Fără categorie'),
                                 const SizedBox(width: 16),
-                                Icon(Icons.access_time, size: 16, color: Colors.purple),
+                                Icon(Icons.access_time, size: 16, color: const Color(0xFF9C0033)),
                                 const SizedBox(width: 4),
                                 Text(_formatTime(course['start_time'])),
                               ],
@@ -289,11 +289,11 @@ class _InstructorCoursesScreenState extends State<InstructorCoursesScreen> {
                             const SizedBox(height: 8),
                             Row(
                               children: [
-                                Icon(Icons.people, size: 16, color: Colors.purple),
+                                Icon(Icons.people, size: 16, color: const Color(0xFF9C0033)),
                                 const SizedBox(width: 4),
                                 Text('Capacitate: ${course['capacity'] ?? 'N/A'}'),
                                 const SizedBox(width: 16),
-                                Icon(Icons.euro, size: 16, color: Colors.purple),
+                                Icon(Icons.euro, size: 16, color: const Color(0xFF9C0033)),
                                 const SizedBox(width: 4),
                                 Text('${course['price'] ?? 0} RON'),
                               ],

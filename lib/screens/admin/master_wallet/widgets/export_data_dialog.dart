@@ -247,7 +247,7 @@ class _ExportDataDialogState extends State<ExportDataDialog> {
                 const SizedBox(height: 8),
               ],
               if (_selectedDataTypes.contains('summary')) ...[
-                _buildPreviewItem('Sold Total', '${widget.totalBalance.toStringAsFixed(2)} RON', Icons.attach_money, Colors.purple),
+                _buildPreviewItem('Sold Total', '${widget.totalBalance.toStringAsFixed(2)} RON', Icons.attach_money, const Color(0xFF9C0033)),
               ],
             ],
           ),

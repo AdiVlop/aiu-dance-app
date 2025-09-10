@@ -130,7 +130,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(course!['title'] ?? 'Detalii Curs'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
       ),
       body: _isLoading

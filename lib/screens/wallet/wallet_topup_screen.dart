@@ -138,7 +138,7 @@ class _WalletTopupScreenState extends State<WalletTopupScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Încarcă Portofel'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
       ),
       body: Container(
@@ -162,7 +162,7 @@ class _WalletTopupScreenState extends State<WalletTopupScreen> {
               const Icon(
                 Icons.account_balance_wallet,
                 size: 80,
-                color: Colors.purple,
+                color: const Color(0xFF9C0033),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -170,7 +170,7 @@ class _WalletTopupScreenState extends State<WalletTopupScreen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.purple,
+                  color: const Color(0xFF9C0033),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -192,7 +192,7 @@ class _WalletTopupScreenState extends State<WalletTopupScreen> {
                   prefixIcon: Icon(Icons.monetization_on),
                   border: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.purple),
+                    borderSide: BorderSide(color: const Color(0xFF9C0033)),
                   ),
                 ),
               ),
@@ -200,7 +200,7 @@ class _WalletTopupScreenState extends State<WalletTopupScreen> {
               ElevatedButton(
                 onPressed: _isLoading ? null : _processTopup,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple,
+                  backgroundColor: const Color(0xFF9C0033),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 15),
                 ),

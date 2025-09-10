@@ -264,7 +264,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _buildConfigSection(
               'Informații Studio',
               Icons.home_work,
-              Colors.purple,
+              const Color(0xFF9C0033),
               [
                 _buildTextSetting(
                   'Numele Studioului',

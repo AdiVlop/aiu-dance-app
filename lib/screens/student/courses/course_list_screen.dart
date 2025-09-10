@@ -120,7 +120,7 @@ class _CourseListScreenState extends State<CourseListScreen> {
   Widget _buildPaymentMethodOption(String method, String title, String description, IconData icon) {
     return Card(
       child: ListTile(
-        leading: Icon(icon, color: Colors.purple),
+        leading: Icon(icon, color: const Color(0xFF9C0033)),
         title: Text(title),
         subtitle: Text(description, style: const TextStyle(fontSize: 12)),
         onTap: () => Navigator.pop(context, method),
@@ -367,7 +367,7 @@ class _CourseListScreenState extends State<CourseListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cursuri Disponibile'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF9C0033),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -528,7 +528,7 @@ class _CourseListScreenState extends State<CourseListScreen> {
                                                 : 'Înscrie-te (${course['price']} RON)',
                                           ),
                                           style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.purple,
+                                            backgroundColor: const Color(0xFF9C0033),
                                             foregroundColor: Colors.white,
                                           ),
                                         ),
