@@ -355,15 +355,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.white,
-              Color(0xFFFFF8E1), // amber.shade50
-              Color(0xFFFFF3E0), // orange.shade50
-            ],
-          ),
+          gradient: AIUColors.brandGradient,
         ),
         child: Center(
           child: Column(
@@ -412,7 +404,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF9C0033),
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 4,
+                      color: Colors.black26,
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 10),
@@ -420,12 +419,13 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                 'Aplicația ta de dans preferată',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               const SizedBox(height: 50),
               const CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(const Color(0xFF9C0033)),
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             ],
           ),
