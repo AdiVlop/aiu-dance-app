@@ -17,7 +17,7 @@ def create_aiu_dance_qr():
     """
     
     # URL-ul de download
-    download_url = "https://github.com/AdiVlop/aiu-dance-app/releases/download/v1.0.2/aiu_dance_fixed_supabase.apk"
+    download_url = "https://github.com/AdiVlop/aiu-dance-app/releases/download/v1.0.1-build2/app-release.apk"
     
     # Configurare QR code
     qr = qrcode.QRCode(
@@ -98,7 +98,7 @@ def create_simple_qr():
     """
     Creează un QR code simplu dacă versiunea cu stil nu funcționează
     """
-    download_url = "https://github.com/AdiVlop/aiu-dance-app/releases/download/v1.0.2/aiu_dance_fixed_supabase.apk"
+    download_url = "https://github.com/AdiVlop/aiu-dance-app/releases/download/v1.0.1-build2/app-release.apk"
     
     qr = qrcode.QRCode(
         version=1,

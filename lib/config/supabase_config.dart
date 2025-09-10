@@ -1,24 +1,4 @@
 class SupabaseConfig {
-  // Test configuration with a working Supabase project
-  static const String supabaseUrl = 'https://your-project-id.supabase.co';
-  static const String supabaseAnonKey = 'your-anon-key-here';
-  
-  // Fallback configuration for demo purposes
-  static const String fallbackUrl = 'https://demo.supabase.co';
-  static const String fallbackAnonKey = 'demo-key';
-  
-  // Check if we should use fallback configuration
-  static bool get useFallback => supabaseUrl.contains('your-project-id');
-  
-  // Get the appropriate URL and key
-  static String get effectiveUrl => useFallback ? fallbackUrl : supabaseUrl;
-  static String get effectiveAnonKey => useFallback ? fallbackAnonKey : supabaseAnonKey;
+  static const String supabaseUrl = 'https://wphitbnrfcyzehjbpztd.supabase.co';
+  static const String supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwaGl0Ym5yZmN5emVoamJwenRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4MDYwMDMsImV4cCI6MjA3MjM4MjAwM30.-gsmVMcjVIlXRewVxXI2pDOQuXmI6__3m1VnCdU6HrA';
 }
-
-
-
-
-
-
-
-

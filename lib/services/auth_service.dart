@@ -82,9 +82,22 @@ class AuthService {
       rethrow;
     } on AuthRetryableFetchException catch (e) {
       Logger.error('Network error during auth: ${e.message}', e);
-      // For mobile apps, provide more specific error handling
+      // For mobile apps, provide more specific error handling with retry
       if (e.message.contains('Failed host lookup') || e.message.contains('No address associated with hostname')) {
-        throw Exception('Problema de conexiune la internet. Verifică conexiunea la rețea și încearcă din nou.');
+        Logger.info('Retrying login after network error...');
+        await Future.delayed(const Duration(seconds: 2));
+        try {
+          // Retry once
+          final retryResponse = await _client.auth.signInWithPassword(
+            email: email,
+            password: password,
+          );
+          Logger.info('✅ Retry successful for user: ${retryResponse.user?.email}');
+          return retryResponse;
+        } catch (retryError) {
+          Logger.error('Retry failed: $retryError');
+          throw Exception('Conexiune indisponibilă. Verifică internetul și încearcă din nou.');
+        }
       }
       rethrow;
     } catch (e) {
