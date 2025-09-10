@@ -25,6 +25,82 @@ import 'screens/bar/bar_receipt_screen.dart';
 import 'screens/instructor/instructor_course_create_screen.dart';
 import 'screens/instructor/instructor_announcements_screen.dart';
 
+// AIU Dance Brand Colors
+class AIUColors {
+  static const Color primary = Color(0xFF9C0033);
+  static const Color secondary = Color(0xFFC00055);
+  static const Color background = Color(0xFFF6F7FB);
+  static const Color card = Colors.white;
+  static const Color textPrimary = Color(0xFF111827);
+  static const Color textSecondary = Color(0xFF6B7280);
+  
+  static const LinearGradient brandGradient = LinearGradient(
+    colors: [primary, secondary],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+}
+
+// Gradient Button Widget
+class GradientButton extends StatelessWidget {
+  final String text;
+  final VoidCallback? onPressed;
+  final IconData? icon;
+  final EdgeInsetsGeometry? padding;
+  
+  const GradientButton({
+    super.key,
+    required this.text,
+    this.onPressed,
+    this.icon,
+    this.padding,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: AIUColors.brandGradient,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: AIUColors.primary.withOpacity(0.3),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            padding: padding ?? const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (icon != null) ...[
+                  Icon(icon, color: Colors.white),
+                  const SizedBox(width: 8),
+                ],
+                Text(
+                  text,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -70,9 +146,70 @@ class MyApp extends StatelessWidget {
       title: 'AIU Dance',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF9C0033),
+          primary: const Color(0xFF9C0033),
+          secondary: const Color(0xFFC00055),
+          surface: Colors.white,
+          background: const Color(0xFFF6F7FB),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF6F7FB),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF9C0033),
+          foregroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true,
+        ),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Color(0xFF111827)),
+          bodyMedium: TextStyle(color: Color(0xFF6B7280)),
+          bodySmall: TextStyle(color: Color(0xFF6B7280)),
+          titleLarge: TextStyle(color: Color(0xFF111827)),
+          titleMedium: TextStyle(color: Color(0xFF111827)),
+          titleSmall: TextStyle(color: Color(0xFF111827)),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF9C0033),
+            foregroundColor: Colors.white,
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: const Color(0xFF9C0033),
+            side: const BorderSide(color: Color(0xFF9C0033)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          ),
+        ),
+        cardTheme: const CardThemeData(
+          color: Colors.white,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Color(0xFF9C0033)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
       ),
       home: const SplashScreen(),
       routes: {
@@ -245,7 +382,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                         borderRadius: BorderRadius.circular(100),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.purple.withOpacity(0.3),
+                            color: const Color(0xFF9C0033).withOpacity(0.3),
                             blurRadius: 20,
                             spreadRadius: 5,
                           ),
@@ -260,7 +397,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                             return const Icon(
                               Icons.music_note,
                               size: 100,
-                              color: Colors.purple,
+                              color: const Color(0xFF9C0033),
                             );
                           },
                         ),
@@ -275,7 +412,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.purple,
+                  color: const Color(0xFF9C0033),
                 ),
               ),
               const SizedBox(height: 10),
@@ -288,7 +425,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               ),
               const SizedBox(height: 50),
               const CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
+                valueColor: AlwaysStoppedAnimation<Color>(const Color(0xFF9C0033)),
               ),
             ],
           ),
@@ -424,7 +561,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(60),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.purple.withOpacity(0.3),
+                          color: const Color(0xFF9C0033).withOpacity(0.3),
                           blurRadius: 20,
                           spreadRadius: 5,
                         ),
@@ -446,7 +583,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Colors.purple,
+                      color: const Color(0xFF9C0033),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -480,7 +617,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                             fontSize: 16,
                     fontWeight: FontWeight.bold,
-                            color: Colors.purple,
+                            color: const Color(0xFF9C0033),
                           ),
                         ),
                         const SizedBox(height: 15),
@@ -558,23 +695,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Login Button
                   SizedBox(
                     width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: _isLoading ? null : _login,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: _isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text(
-                              'Conectează-te',
-                              style: TextStyle(fontSize: 16),
+                    child: _isLoading
+                        ? Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              gradient: AIUColors.brandGradient,
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                    ),
+                            child: const Center(
+                              child: CircularProgressIndicator(color: Colors.white),
+                            ),
+                          )
+                        : GradientButton(
+                            text: 'Conectează-te',
+                            onPressed: _login,
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                          ),
                   ),
                   const SizedBox(height: 20),
                   
@@ -590,7 +726,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: const Text(
                       'Ai uitat parola?',
-                      style: TextStyle(color: Colors.purple),
+                      style: TextStyle(color: const Color(0xFF9C0033)),
                     ),
                   ),
                   
@@ -603,7 +739,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                     child: const Text(
                       'Nu ai cont? Înregistrează-te',
-                      style: TextStyle(color: Colors.purple),
+                      style: TextStyle(color: const Color(0xFF9C0033)),
                     ),
                 ),
               ],
