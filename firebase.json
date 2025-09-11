@@ -6,6 +6,13 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/**",
+        "destination": "https://appauidance.com",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "/download.html",

@@ -155,3 +155,4 @@ RAISE NOTICE '🎉 Script FIX_QR_SCANS_TABLE completat cu succes!';
 
 
 
+

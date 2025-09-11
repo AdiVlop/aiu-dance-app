@@ -56,3 +56,4 @@ class QRScannerScreen extends StatelessWidget {
 
 
 
+
